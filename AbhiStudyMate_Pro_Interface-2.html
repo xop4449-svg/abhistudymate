@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AbhiStudyMate — Defence & Education</title>
+<style>
+:root{
+ --bg:#06121d;--panel:#091b29;--panel2:#0c2233;--line:#17384b;
+ --text:#f4f8fb;--muted:#8fa6b6;--green:#18e889;--green2:#0bbd6c;
+ --blue:#4a9dff;--gold:#ffc94d;--danger:#ff6262
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 75% 0,#12334a 0,#06121d 32%,#04101a 100%);color:var(--text);font:14px Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+button,input{font:inherit}.app{display:grid;grid-template-columns:205px 1fr;min-height:100vh}
+.sidebar{position:sticky;top:0;height:100vh;background:#03101a;border-right:1px solid var(--line);padding:13px 10px;overflow:auto;z-index:20}
+.logo{font-size:21px;font-weight:900;padding:6px 9px 17px;white-space:nowrap}.logo b{color:var(--green)}
+.tag{font-size:9px;letter-spacing:1.2px;color:#7af1ba;margin-top:2px}
+.nav{display:flex;flex-direction:column;gap:2px}.nav button{border:0;background:none;color:#bdcdd7;text-align:left;padding:10px 11px;border-radius:8px;font-weight:700;cursor:pointer}
+.nav button:hover,.nav button.active{background:#084936;color:white}
+.side-quote{margin-top:26px;padding:10px;color:#9db3c0;font-size:12px;line-height:1.45}.side-quote strong{color:var(--green)}
+.main{min-width:0}.topbar{height:62px;display:flex;align-items:center;gap:13px;padding:0 20px;border-bottom:1px solid var(--line);background:#061522f2;position:sticky;top:0;z-index:15}
+.topnav{display:flex;gap:18px;font-weight:700}.topnav span{color:#afc0cc;cursor:pointer}.topnav span:hover{color:white}
+.search{margin-left:auto;width:min(260px,32vw);background:#081d2c;border:1px solid #244a60;color:#fff;padding:9px 14px;border-radius:22px;outline:none}
+.dark{border:1px solid #2a4c5d;background:#0a2030;color:#fff;border-radius:18px;padding:8px 12px;cursor:pointer}
+.user{font-weight:800;white-space:nowrap}
+.wrap{max-width:1400px;margin:auto;padding:14px}
+.hero{height:310px;border:1px solid #1e5066;border-radius:8px;background-image:linear-gradient(90deg,#071522e8 0%,#0715228c 43%,#07152220 100%),url( + hero + r);background-size:cover;background-position:center;display:flex;align-items:flex-end;padding:28px 32px;overflow:hidden}
+.hero small{font-weight:800;letter-spacing:2px}.hero h1{font-size:44px;line-height:.98;margin:9px 0}.hero h1 span{color:var(--green)}.hero p{font-size:15px;color:#d4e0e6;margin:0;max-width:610px}.hero-actions{display:flex;gap:8px;margin-top:16px}.btn{border:0;border-radius:8px;background:var(--green);color:#032216;font-weight:900;padding:10px 15px;cursor:pointer}.btn:hover{filter:brightness(1.08)}.btn.darkbtn{background:#0a2738;color:#d9e8ef;border:1px solid #2a5368}
+.quick{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;margin-top:14px}.quick .card{padding:0;overflow:hidden}.quick-img{height:72px;background-size:cover;background-position:center}.quick-body{padding:10px}.quick h3{margin:0 0 3px;font-size:14px}.quick p{margin:0;color:var(--muted);font-size:11px}.link{color:var(--green);font-weight:800;font-size:11px;margin-top:7px;display:inline-block;cursor:pointer}
+.section{margin-top:18px}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:10px}.section-head h2{font-size:19px;margin:0}.section-head small{color:var(--muted)}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:12px}.subjects{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.card{background:linear-gradient(180deg,#0b2030,#081823);border:1px solid var(--line);border-radius:9px}.subject{padding:12px;text-align:center}.subject .ico{font-size:25px}.subject h3{margin:5px 0 2px;font-size:13px}.subject small{color:var(--muted)}.subject .count{color:#bcd0dc;font-size:10px;margin-top:5px}.subject button{margin-top:8px;padding:6px 10px;border:1px solid #21604d;border-radius:7px;background:#0a4b38;color:#7bf1ba;font-size:11px;font-weight:900;cursor:pointer}
+.mock-tabs{display:flex;background:#0a1823;border:1px solid #17394b;border-radius:8px;padding:3px;margin-bottom:6px}.mock-tabs button{flex:1;border:0;background:none;color:#a7bac5;padding:8px;border-radius:6px;cursor:pointer;font-weight:800}.mock-tabs button.active{background:var(--green);color:#042014}.mock-row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 5px;border-bottom:1px solid #153345}.mock-row:last-child{border:0}.mock-row b{font-size:12px}.mock-row small{display:block;color:var(--muted);margin-top:3px}.start{border:1px solid #229260;background:#073c2d;color:#75f0b6;border-radius:15px;padding:5px 10px;font-weight:900;cursor:pointer}
+.bottomgrid{display:grid;grid-template-columns:1.2fr .8fr;gap:12px;margin-top:12px}.table{width:100%;border-collapse:collapse;font-size:11px}.table th,.table td{padding:9px 7px;text-align:left;border-bottom:1px solid #173445}.table th{color:#7894a4}.status{color:var(--green);font-weight:800}
+.timer{text-align:center;padding:14px}.timer-circle{width:116px;height:116px;margin:8px auto;border-radius:50%;border:8px solid #0b5d48;outline:2px solid #177d60;display:flex;align-items:center;justify-content:center;flex-direction:column}.timer-circle strong{font-size:24px}.timer-circle small{color:var(--muted)}.timer button{border:1px solid #29516a;background:#0b2637;color:#cbdbe3;border-radius:15px;padding:6px 11px;margin:2px;cursor:pointer}.timer button.primary{background:var(--green);color:#032216;border:0}
+.plan .item{display:flex;align-items:center;gap:8px;padding:8px;border-bottom:1px solid #173445;font-size:11px}.plan .item:last-child{border:0}.plan input{accent-color:var(--green)}.time{margin-left:auto;color:#89a1ae}
+.defence-banner{min-height:155px;border-radius:9px;background:linear-gradient(90deg,#05141fe8,#05141f66),url( + hero + r);background-size:cover;background-position:center;padding:20px;display:flex;align-items:end;border:1px solid #1e5066}.defence-banner h2{margin:0;font-size:24px}.defence-banner p{margin:4px 0;color:#d4e1e8}
+.modal{display:none;position:fixed;inset:0;background:#000b;z-index:100;align-items:center;justify-content:center;padding:15px}.modal.open{display:flex}.modalbox{width:min(900px,100%);max-height:92vh;overflow:auto;background:#071824;border:1px solid #2a556c;border-radius:12px;padding:18px}.modalhead{display:flex;justify-content:space-between;align-items:start;position:sticky;top:-18px;background:#071824;padding:3px 0 12px;z-index:2}.close{border:0;background:#173040;color:#fff;border-radius:7px;padding:7px 10px}.testbar{display:flex;gap:8px;flex-wrap:wrap;margin:7px 0 12px}.pill{background:#0c2b3b;border:1px solid #245066;color:#a9c8d7;border-radius:14px;padding:4px 8px;font-size:10px}.pill.green{background:#073c2d;color:#78efb7}.q{padding:13px 0;border-bottom:1px solid #173445}.q p{font-weight:800;margin:0 0 7px}.opt{display:block;padding:6px;color:#c6d6de}.result{background:#0a3428;color:#7af0b7;padding:12px;border-radius:8px;margin-top:12px;font-weight:900}
+footer{margin-top:18px;padding:24px;text-align:center;color:#78919f;border-top:1px solid var(--line)}
+@media(max-width:1100px){.app{grid-template-columns:72px 1fr}.logo{font-size:0}.logo:before{content:'📚';font-size:25px}.nav button{font-size:0;text-align:center}.nav button:before{content:'•';font-size:18px}.side-quote{display:none}.quick{grid-template-columns:repeat(3,1fr)}.subjects{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:750px){.topnav{display:none}.topbar{padding:0 10px}.layout,.bottomgrid{grid-template-columns:1fr}.hero{height:370px;padding:20px}.hero h1{font-size:37px}.quick,.subjects{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.app{display:block}.sidebar{position:fixed;bottom:0;top:auto;height:61px;width:100%;display:flex;align-items:center;overflow:auto;border-right:0;border-top:1px solid var(--line);padding:3px;z-index:50}.brand,.side-quote{display:none}.nav{flex-direction:row;width:max-content}.nav button{font-size:9px!important;min-width:66px;padding:8px}.nav button:before{display:none}.topbar{height:55px}.search{width:40vw}.user{font-size:11px}.wrap{padding:8px}.hero{height:400px}.quick,.subjects{grid-template-columns:1fr}.quick-img{height:100px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="logo">📚 AbhiStudy<b>Mate</b><div class="tag">LEARN | PREPARE | ACHIEVE</div></div>
+  <div class="nav">
+    <button class="active" onclick="go('home')">🏠 Home</button>
+    <button onclick="go('dashboard')">◈ Dashboard</button>
+    <button onclick="go('exams')">▣ SSC GD</button>
+    <button onclick="go('ssb')">♙ SSB</button>
+    <button onclick="go('defence')">★ Army</button>
+    <button onclick="go('defence')">⚓ Navy</button>
+    <button onclick="go('defence')">✈ Air Force</button>
+    <button onclick="go('college')">🎓 College Study</button>
+    <button onclick="go('tests')">☑ Mock Tests</button>
+    <button onclick="go('subjects')">▦ Subject Wise</button>
+    <button onclick="go('communication')">☏ Communication</button>
+    <button onclick="go('timer')">◷ Study Timer</button>
+    <button onclick="go('plan')">☷ Daily Plan</button>
+    <button onclick="alert('Notes & PDFs area ready for adding your study files.')">▤ Notes & PDFs</button>
+    <button onclick="go('dashboard')">▥ Progress</button>
+    <button onclick="alert('Career guidance module selected.')">⚙ Career Guidance</button>
+  </div>
+  <div class="side-quote">“Discipline today builds the future you want tomorrow.”<br><br><strong>— AbhiStudyMate</strong></div>
+</aside>
+
+<main class="main">
+<header class="topbar">
+  <div class="topnav"><span onclick="go('home')">Home</span><span onclick="go('dashboard')">Dashboard</span><span onclick="go('subjects')">Study</span><span onclick="go('tests')">Mock Tests</span><span onclick="go('college')">Notes</span><span onclick="go('defence')">Career</span></div>
+  <input class="search" id="search" placeholder="Search anything..." oninput="filterCards(this.value)">
+  <button class="dark" onclick="document.body.classList.toggle('light')">◐</button>
+  <div class="user">👤 Hi, Abhi⌄</div>
+</header>
+
+<div class="wrap">
+<section class="hero" id="home">
+  <div>
+    <small>DREAM &nbsp;|&nbsp; PREPARE &nbsp;|&nbsp; SERVE</small>
+    <h1>AbhiStudy<span>Mate</span></h1>
+    <p>Your Complete Study and Defence Preparation Platform</p>
+    <p style="font-size:12px;color:#b9cbd5">SSC GD | SSB | Army | Navy | Air Force | College | Technical</p>
+    <div class="hero-actions"><button class="btn" onclick="go('tests')">Start Your Journey →</button><button class="btn darkbtn" onclick="openTest('SSC GD Full Mock',20,100)">Take Mock Test</button></div>
+  </div>
+</section>
+
+<section class="quick" id="exams">
+  <div class="card"><div class="quick-img" style="background-image:url( + hero + r)"></div><div class="quick-body"><h3>🪖 SSC GD</h3><p>Constable (GD)</p><span class="link" onclick="openTest('SSC GD',20,100)">Explore →</span></div></div>
+  <div class="card"><div class="quick-img" style="background-image:url( + hero + r);background-position:60% center"></div><div class="quick-body"><h3>🎖️ SSB</h3><p>Personality & Interview</p><span class="link" onclick="go('ssb')">Explore →</span></div></div>
+  <div class="card"><div class="quick-img" style="background-image:url( + hero + r);background-position:45% center"></div><div class="quick-body"><h3>🪖 Indian Army</h3><p>Join the Pride</p><span class="link" onclick="go('defence')">Explore →</span></div></div>
+  <div class="card"><div class="quick-img" style="background-image:url( + hero + r);background-position:75% center"></div><div class="quick-body"><h3>⚓ Indian Navy</h3><p>Sail for a Greater Future</p><span class="link" onclick="go('defence')">Explore →</span></div></div>
+  <div class="card"><div class="quick-img" style="background-image:url( + hero + r);background-position:right center"></div><div class="quick-body"><h3>✈ Air Force</h3><p>Touch the Skies</p><span class="link" onclick="go('defence')">Explore →</span></div></div>
+  <div class="card"><div class="quick-img" style="background-image:url( + hero + r);filter:saturate(.7)"></div><div class="quick-body"><h3>🎓 College Study</h3><p>Build Your Career</p><span class="link" onclick="go('college')">Explore →</span></div></div>
+</section>
+
+<section class="section" id="dashboard">
+<div class="section-head"><div><h2>📊 Dashboard</h2><small>Your preparation overview</small></div></div>
+<div class="layout">
+<div class="card">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+<div><div class="muted">Overall Progress</div><b style="font-size:25px">68%</b><div class="bar"><i style="width:68%"></i></div></div>
+<div><div class="muted">Total Tests</div><b style="font-size:25px">245</b></div><div><div class="muted">Questions</div><b style="font-size:25px">48,000+</b></div>
+</div>
+</div>
+<div class="card"><b>Welcome Back, Abhi 👋</b><p class="muted">Stay focused. Stay ahead.</p><div class="bar"><i style="width:68%"></i></div></div>
+</div>
+</section>
+
+<section class="section" id="subjects">
+<div class="section-head"><div><h2>📖 Subject Wise Practice</h2><small>Choose a subject and start practicing</small></div><span class="link">View All →</span></div>
+<div class="subjects">
+<div class="card subject" data-search="general knowledge gk"><div class="ico">🌐</div><h3>General Knowledge</h3><small>GK</small><div class="count">5,200+ Questions</div><button onclick="openTest('General Knowledge',5,25)">Start →</button></div>
+<div class="card subject" data-search="reasoning"><div class="ico">🧠</div><h3>Reasoning</h3><small>Logical Ability</small><div class="count">3,800+ Questions</div><button onclick="openTest('Reasoning',5,25)">Start →</button></div>
+<div class="card subject" data-search="mathematics arithmetic"><div class="ico">🧮</div><h3>Mathematics</h3><small>Arithmetic</small><div class="count">4,500+ Questions</div><button onclick="openTest('Arithmetic',5,25)">Start →</button></div>
+<div class="card subject" data-search="english"><div class="ico">📖</div><h3>English</h3><small>Grammar & Vocab</small><div class="count">4,600+ Questions</div><button onclick="openTest('English',5,25)">Start →</button></div>
+<div class="card subject" data-search="physics"><div class="ico">⚛️</div><h3>Physics</h3><small>12+ / Technical</small><div class="count">3,200+ Questions</div><button onclick="openTest('Physics',5,25)">Start →</button></div>
+<div class="card subject" data-search="chemistry"><div class="ico">🧪</div><h3>Chemistry</h3><small>12+ / Technical</small><div class="count">2,800+ Questions</div><button onclick="openTest('Chemistry',5,25)">Start →</button></div>
+<div class="card subject" data-search="electronics"><div class="ico">🔌</div><h3>Electronics</h3><small>Technical</small><div class="count">2,400+ Questions</div><button onclick="openTest('Electronics',5,25)">Start →</button></div>
+<div class="card subject" data-search="electrical engineering"><div class="ico">⚡</div><h3>Electrical Engg.</h3><small>Technical</small><div class="count">2,400+ Questions</div><button onclick="openTest('Electrical',5,25)">Start →</button></div>
+</div></section>
+
+<section class="section" id="tests">
+<div class="layout">
+<div class="card">
+<div class="section-head"><div><h2>📝 Mock Test</h2><small>Full Test (20 Min) or Quick Test (5 Min)</small></div></div>
+<div class="mock-tabs"><button class="active">Full Test (20 Min)</button><button>Quick Test (5 Min)</button></div>
+<div class="mock-row"><div><b>General Knowledge</b><small>20 min | 100 Qs</small></div><button class="start" onclick="openTest('General Knowledge',20,100)">Start</button></div>
+<div class="mock-row"><div><b>Reasoning</b><small>20 min | 100 Qs</small></div><button class="start" onclick="openTest('Reasoning',20,100)">Start</button></div>
+<div class="mock-row"><div><b>Mathematics</b><small>20 min | 100 Qs</small></div><button class="start" onclick="openTest('Arithmetic',20,100)">Start</button></div>
+<div class="mock-row"><div><b>English</b><small>20 min | 100 Qs</small></div><button class="start" onclick="openTest('English',20,100)">Start</button></div>
+<div class="mock-row"><div><b>Technical (Physics, Chemistry, Electronics, EE)</b><small>20 min | 100 Qs</small></div><button class="start" onclick="openTest('Technical',20,100)">Start</button></div>
+</div>
+
+<div class="card timer" id="timer">
+<h3>⏱ Study Timer <span class="muted">(Pomodoro)</span></h3><div class="muted">Stay focused!</div>
+<div class="timer-circle"><strong id="pclock">25:00</strong><small>Study Time</small></div>
+<button class="primary btn" onclick="pstart()">Start</button><button onclick="ppause()">Pause</button><button onclick="preset()">Reset</button>
+</div>
+</div></section>
+
+<section class="section">
+<div class="bottomgrid">
+<div class="card"><div class="section-head"><div><h2>🏆 Latest Mock Tests</h2></div><span class="link">View All →</span></div>
+<table class="table"><tr><th>Test Name</th><th>Subject</th><th>Questions</th><th>Time</th><th>Status</th><th>Action</th></tr>
+<tr><td>SSC GD Full Mock Test - 1</td><td>All Subjects</td><td>100</td><td>20 min</td><td class="status">Completed</td><td><button class="start" onclick="openTest('SSC GD',20,100)">Start</button></td></tr>
+<tr><td>Army Technical Test - 1</td><td>Technical</td><td>100</td><td>20 min</td><td class="status">Completed</td><td><button class="start" onclick="openTest('Technical',20,100)">Start</button></td></tr>
+<tr><td>Navy SSR Mock Test - 1</td><td>General + Technical</td><td>100</td><td>20 min</td><td class="status">Completed</td><td><button class="start" onclick="openTest('Technical',20,100)">Start</button></td></tr>
+<tr><td>Air Force Group X & Y - 1</td><td>General + Technical</td><td>100</td><td>20 min</td><td class="status">Completed</td><td><button class="start" onclick="openTest('Technical',20,100)">Start</button></td></tr>
+<tr><td>SSB Interview Practice</td><td>Psychology + GTO</td><td>50</td><td>5 min</td><td class="status">Practice</td><td><button class="start" onclick="openTest('SSB',5,25)">Start</button></td></tr>
+</table></div>
+<div class="card plan" id="plan"><div class="section-head"><div><h2>📅 Daily Study Plan</h2><small>View All →</small></div></div>
+<div class="item"><input type="checkbox" checked> <b>06:00 AM</b> Physical Fitness / Workout</div><div class="item"><input type="checkbox" checked> <b>07:00 AM</b> GK & Current Affairs</div><div class="item"><input type="checkbox" checked> <b>09:00 AM</b> Subject Study (Maths)</div><div class="item"><input type="checkbox"> <b>11:00 AM</b> Mock Test (20 min)</div><div class="item"><input type="checkbox"> <b>02:00 PM</b> Reasoning Practice</div><div class="item"><input type="checkbox"> <b>04:00 PM</b> English Practice</div><div class="item"><input type="checkbox"> <b>06:00 PM</b> Technical Subject</div></div>
+</div></section>
+
+<section class="section" id="defence"><div class="defence-banner"><div><h2>🇮🇳 Defence Career</h2><p>Prepare for Army, Navy and Air Force with focused practice.</p><button class="btn" onclick="openTest('Technical',20,100)">Know More →</button></div></div></section>
+
+<section class="section" id="ssb"><div class="card"><h2>🎖️ SSB Preparation</h2><p class="muted">Interview • Psychology • GTO • Communication • Officer Like Qualities</p><button class="btn" onclick="openTest('SSB',5,25)">Start SSB Practice</button></div></section>
+<section class="section" id="communication"><div class="card"><h2>🗣️ Communication</h2><p class="muted">Self-introduction, interview answers, speaking practice and confidence-building exercises.</p><button class="btn" onclick="alert('Practice: introduce yourself in 60–90 seconds using your own words.')">Practice Now</button></div></section>
+<section class="section" id="college"><div class="card"><h2>🎓 College Study</h2><p class="muted">Notes, assignments, revision plans and 12+ technical preparation.</p><button class="btn" onclick="alert('College Study Hub selected.')">Open College Hub</button></div></section>
+
+<footer>© 2026 AbhiStudyMate • Prepare • Train • Succeed</footer>
+</div>
+</main>
+</div>
+
+<div class="modal" id="modal"><div class="modalbox"><div class="modalhead"><div><h2 id="mtitle">Mock Test</h2><div class="testbar"><span class="pill green" id="mcount">100 Questions</span><span class="pill" id="mtime">20:00</span><span class="pill" id="msubject">Mixed</span></div></div><button class="close" onclick="closeTest()">✕</button></div><div id="questions"></div><button class="btn" onclick="submitTest()">Submit Test</button><div id="result"></div></div></div>
+
+<script>
+const BANK={
+'General Knowledge':[['What is the capital of India?','New Delhi',['Mumbai','New Delhi','Kolkata','Chennai']],['The Constitution of India came into force on:','26 January 1950',['15 August 1947','26 January 1950','26 November 1949','2 October 1950']],['The Red Planet is:','Mars',['Venus','Mars','Jupiter','Mercury']]],
+Reasoning:[['2, 4, 8, 16, ?','32',['24','28','32','36']],['If CAT becomes DBU, DOG becomes:','EPH',['EPH','EOG','FPH','DOF']],['Odd one out:','Triangle',['Square','Circle','Triangle','Rectangle']]],
+Arithmetic:[['25% of 200 equals:','50',['25','40','50','75']],['3/4 + 1/4 equals:','1',['1/2','1','3/4','2']],['A number increased by 20% from 100 is:','120',['110','115','120','125']]],
+English:[['Correct spelling:','Necessary',['Necesary','Necessary','Neccessary','Nessesary']],['Opposite of ancient:','Modern',['Old','Modern','Historic','Early']],['Correct sentence:','He is going to school.',['He going school.','He is going to school.','He are going school.','He go to school.']]],
+Physics:[['SI unit of force:','Newton',['Joule','Newton','Watt','Pascal']],['Approximate g near Earth:','9.8 m/s²',['3.8 m/s²','9.8 m/s²','15 m/s²','20 m/s²']]],
+Chemistry:[['Symbol of sodium:','Na',['S','So','Na','N']],['pH below 7 is:','Acidic',['Basic','Neutral','Acidic','Metallic']]],
+Electronics:[['A diode primarily allows current:','In one direction',['In both directions','In one direction','Never','Only AC']],['Resistance unit:','Ohm',['Volt','Ampere','Ohm','Watt']]],
+Electrical:[['Ohm’s law:','V = IR',['P = VI','V = IR','I = VR','R = VI']],['A transformer works on:','Electromagnetic induction',['Friction','Electromagnetic induction','Chemical reaction','Heat conduction']]],
+Technical:[['SI unit of power:','Watt',['Joule','Watt','Newton','Coulomb']],['A capacitor stores energy in an:','Electric field',['Magnetic field','Electric field','Acoustic field','Thermal field']],['Carbon commonly has valency:','4',['1','2','3','4']]],
+SSB:[['A strong interview response is:','Clear and honest',['Memorised','Very long','Clear and honest','Unrelated']],['Teamwork means:','Working toward a shared goal',['Working alone','Working toward a shared goal','Avoiding responsibility','Competing']]],
+'SSC GD':[], 'SSC GD Full':[]
+};
+BANK['SSC GD']=[...BANK['General Knowledge'],...BANK.Reasoning,...BANK.Arithmetic,...BANK.English];
+BANK['SSC GD Full']=[...BANK['SSC GD'],...BANK.Physics,...BANK.Chemistry];
+let active=null,remaining=0,timer=null;
+function go(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'})}
+function openTest(type='SSC GD',minutes=20,count=100){
+active={type,minutes,count};remaining=minutes*60;clearInterval(timer);
+document.getElementById('modal').classList.add('open');document.getElementById('mtitle').textContent=type+' Mock Test';document.getElementById('mcount').textContent=count+' Questions';document.getElementById('msubject').textContent=type;drawTime();
+let pool=BANK[type]||BANK.Technical;let qs=[];for(let i=0;i<count;i++)qs.push(pool[i%pool.length]);
+document.getElementById('questions').innerHTML=qs.map((q,i)=>`<div class="q"><p>${i+1}. ${q[0]}</p>${q[2].map(o=>`<label class="opt"><input type="radio" name="q${i}" value="${encodeURIComponent(o)}"> ${o}</label>`).join('')}</div>`).join('');
+document.getElementById('result').innerHTML='';
+timer=setInterval(()=>{remaining--;drawTime();if(remaining<=0){clearInterval(timer);submitTest(true)}},1000);
+}
+function drawTime(){let m=Math.floor(remaining/60),s=remaining%60;document.getElementById('mtime').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}
+function submitTest(auto=false){let pool=BANK[active.type]||BANK.Technical,score=0;for(let i=0;i<active.count;i++){let x=document.querySelector(`input[name=q${i}]:checked`);if(x&&decodeURIComponent(x.value)===pool[i%pool.length][1])score++}let pct=Math.round(score/active.count*100);document.getElementById('result').className='result';document.getElementById('result').textContent=(auto?'⏰ Time is up! ':'')+`Score ${score}/${active.count} — ${pct}%. ${pct>=80?'Excellent! 🎉':pct>=50?'Good progress — review your mistakes.':'Keep practicing and try again.'}`;clearInterval(timer)}
+function closeTest(){clearInterval(timer);document.getElementById('modal').classList.remove('open')}
+function filterCards(q){q=q.toLowerCase();document.querySelectorAll('[data-search]').forEach(x=>x.style.display=x.dataset.search.includes(q)?'block':'none')}
+let ps=1500,pt=null;function pc(){document.getElementById('pclock').textContent=String(Math.floor(ps/60)).padStart(2,'0')+':'+String(ps%60).padStart(2,'0')}function pstart(){if(pt)return;pt=setInterval(()=>{if(ps){ps--;pc()}else{ppause();alert('🎉 Study session complete!')}},1000)}function ppause(){clearInterval(pt);pt=null}function preset(){ppause();ps=1500;pc()}pc();
+</script>
+</body>
+</html>
