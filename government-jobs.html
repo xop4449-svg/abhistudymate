@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Government Jobs | AbhiStudyMate</title>
+<style>
+:root{--bg:#06121d;--panel:#091b29;--line:#17384b;--text:#f4f8fb;--muted:#9bb0bf;--green:#18e889;--blue:#4a9dff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 75% 0,#12334a 0,#06121d 38%,#04101a 100%);color:var(--text);font:15px system-ui,-apple-system,Segoe UI,sans-serif}
+header{padding:18px clamp(16px,4vw,42px);border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+a{color:var(--green)}.back{display:inline-block;text-decoration:none;border:1px solid var(--line);padding:9px 12px;border-radius:10px;color:var(--text)}
+main{max-width:1100px;margin:auto;padding:24px 16px 50px}.hero{padding:24px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(125deg,#0b2d38,#0b1a2a);margin-bottom:18px}
+h1{margin:0 0 8px;font-size:clamp(26px,5vw,40px)}p{color:var(--muted);line-height:1.6}.tools{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.tools input,.tools select{background:#081723;border:1px solid #25485b;color:var(--text);border-radius:10px;padding:12px;min-width:180px;flex:1}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:17px;display:flex;flex-direction:column;gap:8px}.tag{color:var(--green);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}.card h2{font-size:18px;margin:0}.card p{margin:0 0 6px;font-size:14px}.link{display:inline-block;margin-top:auto;background:#0b3c30;border:1px solid #176447;padding:10px 12px;border-radius:9px;text-decoration:none;font-weight:700}.note{font-size:13px;border-left:3px solid var(--blue);padding:10px 13px;background:#091b29;color:var(--muted);margin:18px 0}.empty{display:none;color:var(--muted);padding:20px}
+</style>
+</head>
+<body>
+<header><strong>📚 AbhiStudyMate <span style="color:var(--green)">/ Government Jobs</span></strong><a class="back" href="index.html">← Back to Study Home</a></header>
+<main>
+<section class="hero"><h1>🇮🇳 Government Jobs Hub</h1><p>Find official recruitment notices, application portals and notification PDFs from trusted government websites. Always verify eligibility, dates and fees in the original notification before applying.</p></section>
+<div class="tools"><input id="search" type="search" placeholder="Search exams or departments…" aria-label="Search jobs"><select id="region" aria-label="Filter by region"><option value="all">All India & States</option><option value="central">Central Government</option><option value="telangana">Telangana</option><option value="andhra">Andhra Pradesh</option><option value="defence">Defence</option></select></div>
+<div class="grid" id="jobs">
+<article class="card" data-region="central" data-search="ssc staff selection commission gd cgl chsl mts constable"><span class="tag">Central Government</span><h2>Staff Selection Commission (SSC)</h2><p>Check SSC recruitment notices, exam calendars, eligibility and official notices for SSC exams.</p><a class="link" href="https://ssc.gov.in/" target="_blank" rel="noopener">Official SSC Website ↗</a></article>
+<article class="card" data-region="central" data-search="upsc civil services nda cds capf recruitment"><span class="tag">Central Government</span><h2>UPSC Recruitment</h2><p>Official recruitment advertisements, examination notices and application information.</p><a class="link" href="https://upsc.gov.in/" target="_blank" rel="noopener">Notices & Advertisements ↗</a><a href="https://upsconline.nic.in/" target="_blank" rel="noopener">UPSC Online Applications ↗</a></article>
+<article class="card" data-region="central" data-search="railway rrb secunderabad alp technician ntpc group d"><span class="tag">Railways</span><h2>Railway Recruitment Board</h2><p>Read official employment notices from RRB Secunderabad.</p><a class="link" href="https://rrbsecunderabad.gov.in/employment-notice/" target="_blank" rel="noopener">Employment Notices ↗</a></article>
+<article class="card" data-region="telangana" data-search="telangana tgpsc group 1 group 2 group 3 jobs recruitment"><span class="tag">Telangana</span><h2>Telangana Public Service Commission</h2><p>Official Telangana recruitment notifications, exam updates and application details.</p><a class="link" href="https://www.tgpsc.gov.in/" target="_blank" rel="noopener">Official TGPSC Website ↗</a></article>
+<article class="card" data-region="andhra" data-search="andhra pradesh appsc group 1 group 2 recruitment notification"><span class="tag">Andhra Pradesh</span><h2>AP Public Service Commission</h2><p>Recruitment notifications and official application links for APPSC posts.</p><a class="link" href="https://portal-psc.ap.gov.in/HomePages/RecruitmentNotifications" target="_blank" rel="noopener">Recruitment Notifications ↗</a></article>
+<article class="card" data-region="defence" data-search="army indian army agniveer officer recruitment"><span class="tag">Defence</span><h2>Indian Army</h2><p>Official recruitment portal for Army entries and recruitment information.</p><a class="link" href="https://joinindianarmy.nic.in/" target="_blank" rel="noopener">Join Indian Army ↗</a></article>
+<article class="card" data-region="defence" data-search="navy indian navy agniveer sailor officer recruitment"><span class="tag">Defence</span><h2>Indian Navy</h2><p>Official Navy recruitment and entry information.</p><a class="link" href="https://joinindiannavy.gov.in/" target="_blank" rel="noopener">Join Indian Navy ↗</a></article>
+<article class="card" data-region="defence" data-search="indian air force agniveervayu recruitment"><span class="tag">Defence</span><h2>Indian Air Force</h2><p>Official Agniveervayu recruitment portal and notices.</p><a class="link" href="https://agnipathvayu.cdac.in/" target="_blank" rel="noopener">Agniveervayu Portal ↗</a></article>
+<article class="card" data-region="central" data-search="employment news weekly government vacancies recruitment"><span class="tag">Central Government</span><h2>Employment News</h2><p>Government job advertisements and employment information.</p><a class="link" href="https://employmentnews.gov.in/" target="_blank" rel="noopener">Employment News ↗</a></article>
+</div><div class="empty" id="empty">No matching department found. Try a different search.</div>
+<div class="note">Update note: this page links to official recruitment sources; it does not automatically fetch live vacancies. Confirm the latest dates and download the official notification PDF from each department before applying. Never pay an unofficial agent or share OTPs.</div>
+</main>
+<script>
+const search=document.getElementById('search'),region=document.getElementById('region');
+function filterJobs(){const q=search.value.trim().toLowerCase(),r=region.value;let shown=0;document.querySelectorAll('.card').forEach(card=>{const ok=(r==='all'||card.dataset.region===r)&&card.dataset.search.includes(q)||false;const matches=(r==='all'||card.dataset.region===r)&&(card.dataset.search+' '+card.innerText.toLowerCase()).includes(q);card.style.display=matches?'flex':'none';if(matches)shown++});document.getElementById('empty').style.display=shown?'none':'block'}
+search.addEventListener('input',filterJobs);region.addEventListener('change',filterJobs);
+</script>
+</body></html>
