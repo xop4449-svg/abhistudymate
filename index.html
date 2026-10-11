@@ -51,7 +51,7 @@ footer{margin-top:18px;padding:24px;text-align:center;color:#78919f;border-top:1
     <button onclick="go('dashboard')">◈ Dashboard</button>
     <button onclick="go('exams')">▣ SSC GD</button>
     <button onclick="go('ssb')">♙ SSB</button>
-    <button onclick="location.href='government-jobs.html'">🇮🇳 Government Jobs</button>
+    <button onclick="go('government-jobs')">🇮🇳 Government Jobs</button>
     <button onclick="go('defence')">★ Army</button>
     <button onclick="go('defence')">⚓ Navy</button>
     <button onclick="go('defence')">✈ Air Force</button>
@@ -161,6 +161,27 @@ footer{margin-top:18px;padding:24px;text-align:center;color:#78919f;border-top:1
 <section class="section" id="communication"><div class="card"><h2>🗣️ Communication</h2><p class="muted">Self-introduction, interview answers, speaking practice and confidence-building exercises.</p><button class="btn" onclick="alert('Practice: introduce yourself in 60–90 seconds using your own words.')">Practice Now</button></div></section>
 <section class="section" id="college"><div class="card"><h2>🎓 College Study</h2><p class="muted">Notes, assignments, revision plans and 12+ technical preparation.</p><button class="btn" onclick="alert('College Study Hub selected.')">Open College Hub</button></div></section>
 
+
+<section class="section" id="government-jobs">
+<div class="card" style="padding:16px">
+<div class="section-head"><div><h2>🇮🇳 Government Jobs Hub</h2><small>Official recruitment portals — verify dates and eligibility in each notification</small></div></div>
+<input id="govJobSearch" type="search" placeholder="Search SSC, Railway, Telangana, Army…" aria-label="Search government jobs" style="width:100%;padding:12px;margin:8px 0 12px;background:#081d2c;border:1px solid #244a60;color:#fff;border-radius:9px">
+<div id="govJobCards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px">
+<article data-job="ssc staff selection commission gd cgl chsl mts" class="card" style="padding:14px"><b>Staff Selection Commission (SSC)</b><p class="muted">SSC GD, CGL, CHSL, MTS and other notices.</p><a class="link" href="https://ssc.gov.in/" target="_blank" rel="noopener">Official SSC Website ↗</a></article>
+<article data-job="upsc civil services nda cds capf" class="card" style="padding:14px"><b>UPSC</b><p class="muted">Recruitment notices and examination advertisements.</p><a class="link" href="https://upsc.gov.in/" target="_blank" rel="noopener">UPSC Notices ↗</a><a class="link" href="https://upsconline.nic.in/" target="_blank" rel="noopener">Online Applications ↗</a></article>
+<article data-job="railway rrb secunderabad ntpc alp technician group d" class="card" style="padding:14px"><b>Railway Recruitment Board</b><p class="muted">Official employment notices from RRB Secunderabad.</p><a class="link" href="https://rrbsecunderabad.gov.in/employment-notice/" target="_blank" rel="noopener">Employment Notices ↗</a></article>
+<article data-job="telangana tgpsc group 1 group 2 group 3" class="card" style="padding:14px"><b>Telangana Public Service Commission</b><p class="muted">Telangana recruitment notifications and exam updates.</p><a class="link" href="https://www.tgpsc.gov.in/" target="_blank" rel="noopener">Official TGPSC Website ↗</a></article>
+<article data-job="andhra pradesh appsc group 1 group 2" class="card" style="padding:14px"><b>AP Public Service Commission</b><p class="muted">APPSC recruitment notifications.</p><a class="link" href="https://portal-psc.ap.gov.in/HomePages/RecruitmentNotifications" target="_blank" rel="noopener">Recruitment Notices ↗</a></article>
+<article data-job="indian army agniveer officer" class="card" style="padding:14px"><b>Indian Army</b><p class="muted">Official Army entry and recruitment portal.</p><a class="link" href="https://joinindianarmy.nic.in/" target="_blank" rel="noopener">Join Indian Army ↗</a></article>
+<article data-job="indian navy sailor officer agniveer" class="card" style="padding:14px"><b>Indian Navy</b><p class="muted">Official Navy recruitment information.</p><a class="link" href="https://joinindiannavy.gov.in/" target="_blank" rel="noopener">Join Indian Navy ↗</a></article>
+<article data-job="indian air force agniveervayu" class="card" style="padding:14px"><b>Indian Air Force</b><p class="muted">Official Agniveervayu recruitment portal.</p><a class="link" href="https://agnipathvayu.cdac.in/" target="_blank" rel="noopener">Agniveervayu Portal ↗</a></article>
+<article data-job="employment news central government vacancies" class="card" style="padding:14px"><b>Employment News</b><p class="muted">Government job advertisements and employment information.</p><a class="link" href="https://employmentnews.gov.in/" target="_blank" rel="noopener">Employment News ↗</a></article>
+</div>
+<p id="govJobEmpty" class="muted" style="display:none">No matching department found. Try another search.</p>
+<p class="muted" style="font-size:12px;margin-top:12px">This hub links to official sources; it does not automatically fetch live vacancies. Check the original notification for dates, eligibility and fees. Never share OTPs or pay unofficial agents.</p>
+</div>
+</section>
+
 <footer>© 2026 AbhiStudyMate • Prepare • Train • Succeed</footer>
 </div>
 </main>
@@ -199,6 +220,10 @@ function submitTest(auto=false){let pool=BANK[active.type]||BANK.Technical,score
 function closeTest(){clearInterval(timer);document.getElementById('modal').classList.remove('open')}
 function filterCards(q){q=q.toLowerCase();document.querySelectorAll('[data-search]').forEach(x=>x.style.display=x.dataset.search.includes(q)?'block':'none')}
 let ps=1500,pt=null;function pc(){document.getElementById('pclock').textContent=String(Math.floor(ps/60)).padStart(2,'0')+':'+String(ps%60).padStart(2,'0')}function pstart(){if(pt)return;pt=setInterval(()=>{if(ps){ps--;pc()}else{ppause();alert('🎉 Study session complete!')}},1000)}function ppause(){clearInterval(pt);pt=null}function preset(){ppause();ps=1500;pc()}pc();
+
+const govSearch=document.getElementById('govJobSearch');
+if(govSearch){govSearch.addEventListener('input',()=>{const q=govSearch.value.trim().toLowerCase();let n=0;document.querySelectorAll('#govJobCards [data-job]').forEach(card=>{const show=card.dataset.job.includes(q);card.style.display=show?'flex':'none';if(show)n++});document.getElementById('govJobEmpty').style.display=n?'none':'block'});}
+
 </script>
 </body>
 </html>
